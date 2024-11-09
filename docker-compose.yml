@@ -1,0 +1,32 @@
+services:
+  discord-bot:
+    build: .
+    container_name: discord-bot-container
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - CHANNEL_ID=${CHANNEL_ID}
+      - LEETCODE_API=http://leetcode-service:3000
+    volumes:
+      - .:/app
+    depends_on:
+      - leetcode-service
+
+  leetcode-service: 
+    build: 
+      context: ./.setup_files/
+      dockerfile: Dockerfile
+    container_name: alfa-leetcode-api-docker
+    ports:
+      - '${LEETCODE_API_PORT}:3000'
+    restart: always
+    environment:
+      - WDS_SOCKET_HOST=127.0.0.1 
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+    volumes:
+      - ./.setup_files:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run dev
+
+
+ 

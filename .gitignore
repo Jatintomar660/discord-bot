@@ -1,0 +1,4 @@
+venv/
+.env
+.setup_files/
+*.pyc
