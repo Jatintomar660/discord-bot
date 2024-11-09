@@ -65,4 +65,12 @@ async def list_users(ctx):
     await ctx.send("Current LeetCode users: " + ", ".join(username_list))
     logger.info(f"Current users: {', '.join(username_list)}")
 
+
+@client.command()
+async def leetcode_stats(ctx, username: str):
+    """Displays LeetCode statistics for a specified user."""
+    message= LeetCodeProfileExtractor(username).get_stats_message()
+    logger.info(message)
+    await ctx.send(message)
+
 client.run(TOKEN)
