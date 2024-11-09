@@ -6,6 +6,9 @@ from config import CHANNEL_ID, BOT_TOKEN as TOKEN, LEETCODE_API_BASE_URL, SLEEP_
 from profile_info_extractor import LeetCodeProfileExtractor
 
 intents = discord.Intents.default()
+intents.messages = True
+intents.message_content = True
+
 client = commands.Bot(command_prefix="!", intents=intents)
 
 username_list=['aryaman0098','Jatin660']
@@ -34,7 +37,7 @@ async def on_ready():
                 for user in username_list:
                     message= LeetCodeProfileExtractor(user).get_stats_message()
                     logger.info(message)
-                    # await channel.send(message)
+                    await channel.send(message)
                 await asyncio.sleep(SLEEP_TIME)  
         else:
             logger.info("Channel not found!")

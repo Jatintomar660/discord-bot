@@ -40,7 +40,7 @@ class LeetCodeProfileExtractor:
     **Recent Submission:**  
     📝 **{stats['recentSubmissions'][0]['title']}**  
     _Status:_ {stats['recentSubmissions'][0]['statusDisplay']}  
-    _Language:_ {stats['recentSubmissions'][0]['lang']}  
+    _Language:_ {stats['recentSubmissions'][0]['lang']}\n\n\n  
         """
         return markdown
     
