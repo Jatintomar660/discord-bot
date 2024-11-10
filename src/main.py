@@ -11,7 +11,7 @@ intents.message_content = True
 
 client = commands.Bot(command_prefix="!", intents=intents)
 
-username_list=['aryaman0098','Jatin660']
+username_list=['aryaman0098','Jatin660',"iscariot"]
 
 @client.event
 async def on_ready():
